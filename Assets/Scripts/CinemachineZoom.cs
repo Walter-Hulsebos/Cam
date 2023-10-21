@@ -18,9 +18,13 @@ public class CinemachineZoom : MonoBehaviour
 
     private void Awake()
     {
-        Camera.main.gameObject.TryGetComponent<CinemachineBrain>(out var brain);
-        if (brain == null) { brain = Camera.main.gameObject.GetComponent<CinemachineBrain>(); }
-        virtualCamera = gameObject.AddComponent<CinemachineVirtualCamera>();
+        // Camera.main.gameObject.TryGetComponent<CinemachineBrain>(out var brain);
+        // if (brain == null) 
+        // {
+        //     brain = Camera.main.gameObject.GetComponent<CinemachineBrain>(); 
+        // }
+        
+        //virtualCamera = gameObject.AddComponent<CinemachineVirtualCamera>();
 
         Use.UpdateRequiredSelectable(gameObject);
     }
@@ -218,12 +222,9 @@ public class CinemachineZoom : MonoBehaviour
 
     protected void SetZoom(float current)
     {
-        // Make sure the camera exists
-        var camera = virtualCamera;
-
-        if (camera != null)
+        if (virtualCamera != null)
         {
-            camera.m_Lens.OrthographicSize = current;
+            virtualCamera.m_Lens.OrthographicSize = current;
            
         }
         else
